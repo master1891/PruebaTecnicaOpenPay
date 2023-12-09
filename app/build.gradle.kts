@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id ("com.google.dagger.hilt.android")
     id ("kotlin-kapt")
+    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -64,6 +66,7 @@ android {
 
 dependencies {
 
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
     //referencia a versiones de dependencias
     val retrofit_version = "2.9.0";
     val hilt_version = "2.49"
@@ -92,4 +95,15 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:${retrofit_version}")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
+    //Google Services y Mapas
+    implementation ("com.google.maps.android:maps-compose:2.9.0")
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+
+    //Permisos
+    implementation ("com.google.accompanist:accompanist-permissions:0.31.3-beta")
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }

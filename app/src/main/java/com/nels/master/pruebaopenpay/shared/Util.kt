@@ -1,5 +1,9 @@
 package com.nels.master.pruebaopenpay.shared
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -30,4 +34,14 @@ private fun getMessageFromErrorBody(errorBody: ResponseBody, defaultMessage: Str
     } ?: "$defaultMessage ($responseCode)"
 } catch (e: Exception) {
     e.toString()
+}
+
+fun Context.hasLocationPermission(): Boolean {
+    return ContextCompat.checkSelfPermission(
+        this,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+        this,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED
 }

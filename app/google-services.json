@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33899971016",
+    "project_id": "examen-openpay",
+    "storage_bucket": "examen-openpay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33899971016:android:c3d43ff269cb41f7c280fd",
+        "android_client_info": {
+          "package_name": "com.nels.master.pruebaopenpay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeuIMxOoLJeWp21GRs3kOObRCz-sZ4gnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

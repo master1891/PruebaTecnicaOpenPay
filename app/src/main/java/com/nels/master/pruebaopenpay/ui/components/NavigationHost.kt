@@ -11,11 +11,17 @@ import androidx.navigation.compose.composable
 import com.nels.master.pruebaopenpay.features.locationfeature.LoacationScreen
 import com.nels.master.pruebaopenpay.features.uploadfeature.UploadScreen
 import com.nels.master.pruebaopenpay.features.homefeature.HomeScreen
-
+import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
+import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
 
 
 @Composable
-fun NavigationHost(navController: NavHostController) {
+fun NavigationHost(
+   navController: NavHostController,
+   lisViewMoldel: ListMoviesViewModel,
+   mainViewMoldel: MainViewMoldel
+) {
+
    NavHost(
       navController = navController,
       startDestination = BottomNavigationScreens.Home.route){
@@ -23,10 +29,10 @@ fun NavigationHost(navController: NavHostController) {
          HomeScreen()
       }
       composable(BottomNavigationScreens.List.route){
-         ListScreen()
+         ListScreen(lisViewMoldel)
       }
       composable(BottomNavigationScreens.Location.route){
-         LoacationScreen()
+         LoacationScreen(mainViewMoldel)
       }
       composable(BottomNavigationScreens.Upload.route){
          UploadScreen()
