@@ -1,5 +1,8 @@
 package com.nels.master.pruebaopenpay
 
+import android.Manifest
+import android.content.Context
+import android.os.Build
 import com.nels.master.pruebaopenpay.ui.theme.PruebaOpenPayTheme
 
 
@@ -7,6 +10,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,15 +20,21 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.nels.master.pruebaopenpay.features.listfeature.network.ApiMovie
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
+import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
+import com.nels.master.pruebaopenpay.shared.hasLocationPermission
 import com.nels.master.pruebaopenpay.ui.components.BarraInferior
 import com.nels.master.pruebaopenpay.ui.components.BottomNavigationScreens
 import com.nels.master.pruebaopenpay.ui.components.NavigationHost
+import com.nels.master.pruebaopenpay.ui.components.RationaleAlert
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,23 +42,59 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val viewModel by viewModels<ListMoviesViewModel>()
+    val listMoviesViewModel by viewModels<ListMoviesViewModel>()
+    val mainViewModel by viewModels<MainViewMoldel>()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        viewModel.getRecomendations(238)
-
         setContent {
+
             PruebaOpenPayTheme {
-                MainScreen()
+                Permisions(context = this, mainViewModel = mainViewModel)
+                MainScreen(mainViewModel, listMoviesViewModel)
             }
         }
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun MainScreen() {
+fun Permisions(context :Context, mainViewModel: MainViewMoldel){
+
+    val permisionsState = rememberMultiplePermissionsState(
+        permissions = listOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        )
+    )
+
+    LaunchedEffect(!context.hasLocationPermission()) {
+        permisionsState.launchMultiplePermissionRequest()
+    }
+    when{
+        permisionsState.allPermissionsGranted ->{
+            mainViewModel.requestLocation(MainViewMoldel.PermissionEvent.Granted)
+        }
+        permisionsState.shouldShowRationale ->{
+            RationaleAlert(onDismiss = { /*TODO*/ }) {
+                permisionsState.launchMultiplePermissionRequest()
+            }
+        }
+
+        !permisionsState.allPermissionsGranted && !permisionsState.shouldShowRationale -> {
+            LaunchedEffect(Unit) {
+                mainViewModel.requestLocation(MainViewMoldel.PermissionEvent.Revoked)
+            }
+        }
+
+    }
+}
+
+
+@Composable
+fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesViewModel) {
 
     val navController = rememberNavController()
     val scafold = rememberScrollState()
@@ -62,14 +108,18 @@ fun MainScreen() {
     )
 
     Scaffold(
-        bottomBar = {BarraInferior(navController,navigationImtems)},
+        bottomBar = { BarraInferior(navController, navigationImtems) },
 
-        ){
+        ) {
         Column(
             modifier = Modifier
                 .padding(it),
         ) {
-            NavigationHost(navController = navController)
+            NavigationHost(
+                navController = navController,
+                mainViewMoldel = mainViewModel,
+                lisViewMoldel = listMoviesViewModel
+            )
         }
     }
 }
