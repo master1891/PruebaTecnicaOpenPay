@@ -11,6 +11,7 @@ import com.nels.master.pruebaopenpay.features.listfeature.domain.usecase.GetPopu
 import com.nels.master.pruebaopenpay.features.listfeature.domain.usecase.GetRecomendationsUseCase
 import com.nels.master.pruebaopenpay.features.listfeature.domain.usecase.GetTopRatedMoviesUseCase
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.states.MoviesStates
+import com.nels.master.pruebaopenpay.features.modeoffline.domian.usecases.GetAllMoviesDbUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,7 +21,7 @@ class ListMoviesViewModel @Inject constructor(
     private val getAllMoviesUseCase: GetAllMoviesUseCase,
     private val popularMoviesUseCase: GetPopularMoviesUseCase,
     private val topRatedMoviesUseCase: GetTopRatedMoviesUseCase,
-    private val recomendationsUseCase: GetRecomendationsUseCase
+    private val recomendationsUseCase: GetRecomendationsUseCase,
 
 ) :ViewModel() {
 

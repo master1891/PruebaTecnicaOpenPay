@@ -66,11 +66,14 @@ android {
 
 dependencies {
 
-    implementation("com.google.firebase:firebase-firestore:24.10.0")
-    implementation("com.google.firebase:firebase-storage:20.3.0")
     //referencia a versiones de dependencias
     val retrofit_version = "2.9.0";
     val hilt_version = "2.49"
+    val room_version = "2.6.1"
+
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -110,4 +113,10 @@ dependencies {
 
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+
+    implementation ("androidx.room:room-runtime:$room_version")
+    annotationProcessor ("androidx.room:room-compiler:$room_version")
+
+
 }

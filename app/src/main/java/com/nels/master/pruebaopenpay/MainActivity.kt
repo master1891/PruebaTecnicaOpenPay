@@ -1,6 +1,8 @@
 package com.nels.master.pruebaopenpay
 
 import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import com.nels.master.pruebaopenpay.ui.theme.PruebaOpenPayTheme
@@ -25,12 +27,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import androidx.room.Room
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.nels.master.pruebaopenpay.features.homefeature.viewmodels.ProfileViewModel
 import com.nels.master.pruebaopenpay.features.listfeature.network.ApiMovie
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
+import com.nels.master.pruebaopenpay.features.modeoffline.storage.MoviesDatabase
 import com.nels.master.pruebaopenpay.features.uploadfeature.viewmodels.UploafFileViewModel
 import com.nels.master.pruebaopenpay.shared.hasLocationPermission
 import com.nels.master.pruebaopenpay.ui.components.BarraInferior
@@ -38,6 +42,7 @@ import com.nels.master.pruebaopenpay.ui.components.BottomNavigationScreens
 import com.nels.master.pruebaopenpay.ui.components.NavigationHost
 import com.nels.master.pruebaopenpay.ui.components.RationaleAlert
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.internal.notify
 import javax.inject.Inject
 
 
@@ -52,6 +57,9 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //val moviesDatabase = Room.databaseBuilder(this, MoviesDatabase::class.java,"movie_db").build()
+        //val ele = moviesDatabase.movieDao
+
         setContent {
 
             PruebaOpenPayTheme {
@@ -60,6 +68,8 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
 }
 
 @RequiresApi(Build.VERSION_CODES.O)

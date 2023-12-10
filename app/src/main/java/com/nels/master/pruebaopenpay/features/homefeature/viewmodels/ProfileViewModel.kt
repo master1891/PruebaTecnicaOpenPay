@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.nels.master.pruebaopenpay.features.homefeature.domain.usecases.GetFavoriteMoviesUserUseCase
 import com.nels.master.pruebaopenpay.features.homefeature.domain.usecases.GetProfileUseCase
 import com.nels.master.pruebaopenpay.features.homefeature.domain.usecases.GetRatedMoviesUserUseCase
+import com.nels.master.pruebaopenpay.features.modeoffline.domian.usecases.GetAllMoviesDbUsecase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +17,9 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val profileUseCase: GetProfileUseCase,
     private val favoriteMoviesUserUseCase: GetFavoriteMoviesUserUseCase,
-    private val ratedMoviesUserUseCase: GetRatedMoviesUserUseCase
+    private val ratedMoviesUserUseCase: GetRatedMoviesUserUseCase,
+    //private val getAllMoviesDbUsecase: GetAllMoviesDbUsecase
+
 ):ViewModel() {
 
     var profileState by mutableStateOf(ProfileState())
@@ -28,6 +31,8 @@ class ProfileViewModel @Inject constructor(
 
     fun getProfile(profileId: Int){
         viewModelScope.launch {
+           // val res = getAllMoviesDbUsecase()
+
             when(val res = profileUseCase(profileId = profileId)){
                 is GetProfileUseCase.Result.Error -> {
                     profileState = profileState.copy(

@@ -4,4 +4,5 @@
     <string name="today">Hoy</string>
     <string name="ubicacion">Ubicación</string>
     <string name="upoload">Subir archivos</string>
+    <string name="channel_name">channelName</string>
 </resources>

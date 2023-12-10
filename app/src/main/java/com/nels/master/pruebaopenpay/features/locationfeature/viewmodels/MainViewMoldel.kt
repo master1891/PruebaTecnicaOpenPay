@@ -1,5 +1,6 @@
 package com.nels.master.pruebaopenpay.features.locationfeature.viewmodels
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -13,7 +14,9 @@ import com.nels.master.pruebaopenpay.features.locationfeature.domain.models.Posi
 import com.nels.master.pruebaopenpay.features.locationfeature.domain.usecases.GetLocationUsecase
 import com.nels.master.pruebaopenpay.features.locationfeature.domain.usecases.GetLocationsBdUseCase
 import com.nels.master.pruebaopenpay.features.locationfeature.domain.usecases.GetRegisterLocationUseCase
+import com.nels.master.pruebaopenpay.shared.LocalNotification
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -24,10 +27,12 @@ import javax.inject.Inject
 class MainViewMoldel @Inject constructor(
     private val getLocationUsecase: GetLocationUsecase,
     private val getRegisterLocationUseCase: GetRegisterLocationUseCase,
-    private val  getLocationsBdUseCase: GetLocationsBdUseCase
+    private val  getLocationsBdUseCase: GetLocationsBdUseCase,
+    @ApplicationContext private val  context: Context
 ) :ViewModel() {
 
     val TAG = "MainViewModel"
+    private val localNotification = LocalNotification(context)
 
     var statePosition by mutableStateOf(PositionState())
         private set
@@ -46,6 +51,8 @@ class MainViewMoldel @Inject constructor(
                             Log.e(TAG,"Lat: ${it.latitude} Lng: ${it.longitude}")
                             val posicion = Posicion(latitud = it.latitude, longitud = it.longitude, fecha = current )
                             getRegisterLocationUseCase(posicion)
+                            localNotification.showNotificaiton("Resgistro de notificacion",
+                                "Lat: ${posicion.latitud},Long: ${posicion.longitud}")
                         }
                     }
                 }
