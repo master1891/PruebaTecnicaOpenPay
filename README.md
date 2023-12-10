@@ -27,7 +27,8 @@ Prueba de openpay
 ![upload_picker.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fupload_picker.png =200x150)
 
 ## Imágenes selecionadas para la subida
-![upload_selected.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fupload_selected.png =200x150)
+<img src='app/src/main/res/drawable/upload_selected.png' width='25'>
 
 ## Resultado de la subida de varias imagenes
-![upoload_dashboard.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fupoload_dashboard.png=200x150)
+<img src='app/src/main/res/drawable/upoload_dashboard.png' width='25'>
+
