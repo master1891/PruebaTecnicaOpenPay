@@ -30,4 +30,4 @@ Prueba de openpay
 ![upload_selected.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fupload_selected.png =200x150)
 
 ## Resultado de la subida de varias imagenes
-![upoload_dashboard.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fupoload_dashboard.png =200x150)
+![upoload_dashboard.png](app%2Fsrc%2Fmain%2Fres%2Fdrawable%2Fupoload_dashboard.png=200x150)
