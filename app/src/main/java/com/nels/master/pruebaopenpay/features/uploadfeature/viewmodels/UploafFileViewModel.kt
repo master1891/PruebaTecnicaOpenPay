@@ -39,6 +39,12 @@ class UploafFileViewModel @Inject constructor(
         }
     }
 
+    fun clearStatus(){
+        statusUpload = statusUpload.copy(
+            status = StatusUpload.init
+        )
+    }
+
     sealed interface StatusUpload{
         data object Failed : StatusUpload
         data object Uploaded : StatusUpload

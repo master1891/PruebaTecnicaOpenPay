@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -46,6 +47,7 @@ fun UploadScreen(uploafFileViewModel: UploafFileViewModel) {
     if (uploafFileViewModel.statusUpload.status == UploafFileViewModel.StatusUpload.Uploaded){
         Toast.makeText(LocalContext.current,"Archivos subidos con éxito",Toast.LENGTH_LONG).show()
         selectedImagesUri = emptyList()
+        uploafFileViewModel.clearStatus()
     }
 
     val photoPickerLauncher =
