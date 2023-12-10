@@ -1,6 +1,8 @@
 package com.nels.master.pruebaopenpay.features.listfeature.di
 
 import com.google.gson.GsonBuilder
+import com.nels.master.pruebaopenpay.features.homefeature.domain.ProfileRepository
+import com.nels.master.pruebaopenpay.features.homefeature.network.GetProfileImpl
 import com.nels.master.pruebaopenpay.features.listfeature.domain.AllMoviesRepository
 import com.nels.master.pruebaopenpay.features.listfeature.domain.PopularMoviesRepository
 import com.nels.master.pruebaopenpay.features.listfeature.domain.RecomendationsMoviesRepository
@@ -97,6 +99,13 @@ class MovieModule {
 
     @Provides
     fun getRecomendations(impl: GetRecomendationsRepositoryImpl): RecomendationsMoviesRepository {
+        return impl
+    }
+
+    //para el home
+
+    @Provides
+    fun getProfile(impl: GetProfileImpl): ProfileRepository {
         return impl
     }
 

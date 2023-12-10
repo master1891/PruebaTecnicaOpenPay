@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import com.nels.master.pruebaopenpay.features.homefeature.viewmodels.ProfileViewModel
 import com.nels.master.pruebaopenpay.features.listfeature.network.ApiMovie
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
@@ -46,15 +47,17 @@ class MainActivity : ComponentActivity() {
     val listMoviesViewModel by viewModels<ListMoviesViewModel>()
     val mainViewModel by viewModels<MainViewMoldel>()
     val uploadViewModel by viewModels<UploafFileViewModel>()
+    val profileViewModel by viewModels<ProfileViewModel>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
+            profileViewModel.getProfileState(20794159)
             PruebaOpenPayTheme {
                 Permisions(context = this, mainViewModel = mainViewModel)
-                MainScreen(mainViewModel, listMoviesViewModel, uploadViewModel)
+                MainScreen(mainViewModel, listMoviesViewModel, uploadViewModel,profileViewModel)
             }
         }
     }
@@ -96,7 +99,8 @@ fun Permisions(context :Context, mainViewModel: MainViewMoldel){
 
 
 @Composable
-fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesViewModel,uploafFileViewModel: UploafFileViewModel) {
+fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesViewModel,
+               uploafFileViewModel: UploafFileViewModel, profileViewModel: ProfileViewModel) {
 
     val navController = rememberNavController()
     val scafold = rememberScrollState()
@@ -121,7 +125,8 @@ fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesView
                 navController = navController,
                 mainViewMoldel = mainViewModel,
                 lisViewMoldel = listMoviesViewModel,
-                uploafFileViewModel = uploafFileViewModel
+                uploafFileViewModel = uploafFileViewModel,
+                profileViewModel = profileViewModel
             )
         }
     }
