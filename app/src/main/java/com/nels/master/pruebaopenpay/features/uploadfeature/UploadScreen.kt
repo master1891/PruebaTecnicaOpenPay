@@ -1,6 +1,7 @@
 package com.nels.master.pruebaopenpay.features.uploadfeature
 
 import android.net.Uri
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -27,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +43,11 @@ fun UploadScreen(uploafFileViewModel: UploafFileViewModel) {
         mutableStateOf<List<Uri>>(emptyList())
     }
 
+    if (uploafFileViewModel.statusUpload.status == UploafFileViewModel.StatusUpload.Uploaded){
+        Toast.makeText(LocalContext.current,"Archivos subidos con éxito",Toast.LENGTH_LONG).show()
+        selectedImagesUri = emptyList()
+    }
+
     val photoPickerLauncher =
         rememberLauncherForActivityResult(
             contract = ActivityResultContracts.PickMultipleVisualMedia(),
@@ -52,10 +59,9 @@ fun UploadScreen(uploafFileViewModel: UploafFileViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Gray)
             .padding(16.dp),
     ) {
-        Column(modifier = Modifier.background(Color.LightGray)) {
+        Column {
             Text(
                 text = "Escoje una foto",
                 fontSize = 25.sp,

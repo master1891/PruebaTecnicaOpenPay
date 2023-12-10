@@ -40,7 +40,7 @@ class MainViewMoldel @Inject constructor(
                 viewModelScope.launch {
                     getLocationUsecase.invoke().collect{
                         it?.let {
-                            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
                             val current = LocalDateTime.now().format(formatter)
 
                             Log.e(TAG,"Lat: ${it.latitude} Lng: ${it.longitude}")
