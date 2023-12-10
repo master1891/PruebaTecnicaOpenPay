@@ -14,7 +14,7 @@ class GetToRayedMoviesRepositoryImpl @Inject constructor(
 
     override suspend fun getTopRatedMovies(): TopRatedMoviesRepository.ResultTopRatedMovies {
         return withContext(Dispatchers.IO) {
-            when (val response = apiMovie.getPopularMovies().toDataOrError()) {
+            when (val response = apiMovie.getTopRatedMovies().toDataOrError()) {
                 is DataOrError.Data -> TopRatedMoviesRepository.ResultTopRatedMovies.Success(response.value)
                 is DataOrError.Error -> TopRatedMoviesRepository.ResultTopRatedMovies.Error(response.message)
             }
