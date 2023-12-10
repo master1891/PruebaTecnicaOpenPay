@@ -20,6 +20,11 @@ class UploafFileViewModel @Inject constructor(
         private set
 
     fun uploadImages(images:List<Uri>){
+
+        statusUpload = statusUpload.copy(
+            status = StatusUpload.Uploading
+        )
+
         viewModelScope.launch {
 
             when (val result = getUploadFileUseCase(images)){
