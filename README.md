@@ -59,9 +59,10 @@ Para que el proyecto funcione correctamete es necesario tener instalado el NDk y
 ## Consideraciones
 
 - Cualquier sugerencias es bienvenida.
-- Sientase libre de hacer un pullrequest para mejoras de código.
-- Para entender el proyecto es necesario tenr conocimientos de JetPack Compose
-- Conocimientos de android.
+- Siéntase libre de hacer un pullrequest para mejoras de código.
+- Para entender el proyecto es necesario tenr conocimientos de Jetpack Compose
+- Conocimientos de desarrollo en Android.
+- Conocimientos en kotlin.
 - Conocimientos basicos de C++.
 - Instalar Cmake y NDK.
 - Clone este repositiorio y cambiese a la rama `master` y a trabajar :).
