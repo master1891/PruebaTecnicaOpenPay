@@ -26,7 +26,7 @@ class ProfileViewModel @Inject constructor(
     var ratedMoviesUserState by mutableStateOf(ProfileState())
         private set
 
-    fun getProfileState(profileId: Int){
+    fun getProfile(profileId: Int){
         viewModelScope.launch {
             when(val res = profileUseCase(profileId = profileId)){
                 is GetProfileUseCase.Result.Error -> {
@@ -44,7 +44,7 @@ class ProfileViewModel @Inject constructor(
             }
         }
     }
-    
+
     fun getFavoriteMoviesUser(profileId: Int){
         viewModelScope.launch {
             when(val res = favoriteMoviesUserUseCase(profileId = profileId)){

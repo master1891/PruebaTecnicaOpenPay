@@ -26,6 +26,7 @@ import com.nels.master.pruebaopenpay.features.listfeature.domain.modelos.Movie
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.states.MoviesStates
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
+import com.nels.master.pruebaopenpay.shared.UI.Carrousel
 
 /*
 @Composable
@@ -70,45 +71,7 @@ fun ListScreen(listMoviesViewModel: ListMoviesViewModel) {
      */
 }
 
-@Composable
-fun Carrousel(movies:List<Movie>,header:String) {
-    Column {
-        Text(modifier = Modifier.padding(start = 16.dp),text = header, fontWeight = FontWeight.Bold, fontSize = 20.sp)
-        LazyRow(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp
-                )
-        ) {
-            items(movies) {
-                CardItem(it)
-            }
-        }
-    }
 
-}
 
-@Composable
-fun CardItem(movie:Movie) {
-    Card(
-        modifier = Modifier
-            .size(width = 140.dp, height = 210.dp)
-    ) {
-        Column {
-            AsyncImage(
-                model = ImageRequest.
-                Builder(LocalContext.current)
-                    .data("https://image.tmdb.org/t/p/original/".plus( movie.poster_path))
-                    .crossfade(true)
-                    .scale(Scale.FIT).build()
-                ,
-                contentDescription = null
-            )
-        }
-
-    }
-}
 
 

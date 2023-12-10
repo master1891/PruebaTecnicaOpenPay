@@ -54,7 +54,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            profileViewModel.getProfileState(20794159)
             PruebaOpenPayTheme {
                 Permisions(context = this, mainViewModel = mainViewModel)
                 MainScreen(mainViewModel, listMoviesViewModel, uploadViewModel,profileViewModel)
