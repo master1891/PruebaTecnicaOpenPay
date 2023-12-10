@@ -37,8 +37,8 @@ Prueba de openpay
 
 # Documentación
 
-**PruebaTecnicaOpenPay** Es una aplicación hecha totalmente en kotlin usando Jetpack Compose en el que se muestra el uso de de distintas tecnologias, 
-estre la cuales destaca Firebase Storage,Firestore y Hilt entre otras.
+**PruebaTecnicaOpenPay** Es una aplicación hecha totalmente en kotlin usando Jetpack Compose en el que se muestra el uso de de distintas tecnologias
+entre la cuales destaca Firebase Storage,Firestore y Hilt entre otras.
 
 
 ## Referencias
