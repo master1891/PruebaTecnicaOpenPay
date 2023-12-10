@@ -2,6 +2,8 @@ package com.nels.master.pruebaopenpay.shared.UI
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -17,6 +19,7 @@ import com.nels.master.pruebaopenpay.features.listfeature.domain.modelos.Movie
 fun Carrousel(movies:List<Movie>, header:String) {
     Column {
         Text(modifier = Modifier.padding(start = 16.dp),text = header, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(9.dp))
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier

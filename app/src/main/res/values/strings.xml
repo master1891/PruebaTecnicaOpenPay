@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PruebaOpenPay</string>
-    <string name="pantalla1">Item 1</string>
-    <string name="pantalla2">Item 2</string>
-    <string name="pantalla3">Item 3</string>
-    <string name="pantalla4">Item 4</string>
+    <string name="home">Home</string>
+    <string name="today">Hoy</string>
+    <string name="ubicacion">Ubicación</string>
+    <string name="upoload">Subir archivos</string>
 </resources>

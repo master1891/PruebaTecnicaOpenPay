@@ -60,9 +60,9 @@ sealed class BottomNavigationScreens(
     @StringRes val resourceId: Int,
     val icon: ImageVector
 ) {
-    object Home : BottomNavigationScreens("home", R.string.pantalla1, Icons.Filled.Home)
-    object List : BottomNavigationScreens("list", R.string.pantalla2, Icons.Filled.List)
-    object Location : BottomNavigationScreens("location", R.string.pantalla3, Icons.Default.Place)
+    object Home : BottomNavigationScreens("home", R.string.home, Icons.Filled.Home)
+    object List : BottomNavigationScreens("list", R.string.today, Icons.Filled.List)
+    object Location : BottomNavigationScreens("location", R.string.ubicacion, Icons.Default.Place)
     object Upload :
-        BottomNavigationScreens("upload", R.string.pantalla4, Icons.Outlined.KeyboardArrowUp)
+        BottomNavigationScreens("upload", R.string.upoload, Icons.Outlined.KeyboardArrowUp)
 }
