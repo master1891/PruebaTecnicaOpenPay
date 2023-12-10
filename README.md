@@ -5,7 +5,7 @@ Prueba de openpay
 
 ## Captura del home profile
 
-<img src='app/src/main/res/drawable/home.png.png' width='250'>
+<img src='app/src/main/res/drawable/home.png' width='250'>
 
 ## Captura del listado de peliculas listado por popular top y completo
 
@@ -19,7 +19,7 @@ Prueba de openpay
 
 <img src='app/src/main/res/drawable/locations_dashboard.png' width='1000'>
 
-## Pantallas para la subida de imagene a firesstore
+## Pantallas para la subida de imágene a firesstore
 
 ## Pantalla normal antes de seleccionar imagenes
 
@@ -31,6 +31,5 @@ Prueba de openpay
 ## Imágenes selecionadas para la subida
 <img src='app/src/main/res/drawable/upload_selected.png' width='250'>
 
-## Resultado de la subida de varias imagenes
+## Resultado de la subida de varias imagenes vista desde el dashboard
 <img src='app/src/main/res/drawable/upoload_dashboard.png' width='1000'>
-
