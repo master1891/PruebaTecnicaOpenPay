@@ -30,6 +30,7 @@ import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.nels.master.pruebaopenpay.features.listfeature.network.ApiMovie
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
+import com.nels.master.pruebaopenpay.features.uploadfeature.viewmodels.UploafFileViewModel
 import com.nels.master.pruebaopenpay.shared.hasLocationPermission
 import com.nels.master.pruebaopenpay.ui.components.BarraInferior
 import com.nels.master.pruebaopenpay.ui.components.BottomNavigationScreens
@@ -44,6 +45,7 @@ class MainActivity : ComponentActivity() {
 
     val listMoviesViewModel by viewModels<ListMoviesViewModel>()
     val mainViewModel by viewModels<MainViewMoldel>()
+    val uploadViewModel by viewModels<UploafFileViewModel>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
             PruebaOpenPayTheme {
                 Permisions(context = this, mainViewModel = mainViewModel)
-                MainScreen(mainViewModel, listMoviesViewModel)
+                MainScreen(mainViewModel, listMoviesViewModel, uploadViewModel)
             }
         }
     }
@@ -94,7 +96,7 @@ fun Permisions(context :Context, mainViewModel: MainViewMoldel){
 
 
 @Composable
-fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesViewModel) {
+fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesViewModel,uploafFileViewModel: UploafFileViewModel) {
 
     val navController = rememberNavController()
     val scafold = rememberScrollState()
@@ -118,7 +120,8 @@ fun MainScreen(mainViewModel: MainViewMoldel,listMoviesViewModel: ListMoviesView
             NavigationHost(
                 navController = navController,
                 mainViewMoldel = mainViewModel,
-                lisViewMoldel = listMoviesViewModel
+                lisViewMoldel = listMoviesViewModel,
+                uploafFileViewModel = uploafFileViewModel
             )
         }
     }

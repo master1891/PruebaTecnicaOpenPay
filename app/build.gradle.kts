@@ -67,6 +67,7 @@ android {
 dependencies {
 
     implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
     //referencia a versiones de dependencias
     val retrofit_version = "2.9.0";
     val hilt_version = "2.49"
@@ -106,4 +107,6 @@ dependencies {
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }

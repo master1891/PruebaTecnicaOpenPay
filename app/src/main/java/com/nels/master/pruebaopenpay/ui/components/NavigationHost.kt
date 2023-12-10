@@ -13,13 +13,15 @@ import com.nels.master.pruebaopenpay.features.uploadfeature.UploadScreen
 import com.nels.master.pruebaopenpay.features.homefeature.HomeScreen
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
+import com.nels.master.pruebaopenpay.features.uploadfeature.viewmodels.UploafFileViewModel
 
 
 @Composable
 fun NavigationHost(
    navController: NavHostController,
    lisViewMoldel: ListMoviesViewModel,
-   mainViewMoldel: MainViewMoldel
+   mainViewMoldel: MainViewMoldel,
+   uploafFileViewModel: UploafFileViewModel
 ) {
 
    NavHost(
@@ -35,7 +37,7 @@ fun NavigationHost(
          LoacationScreen(mainViewMoldel)
       }
       composable(BottomNavigationScreens.Upload.route){
-         UploadScreen()
+         UploadScreen(uploafFileViewModel)
       }
    }
 }
