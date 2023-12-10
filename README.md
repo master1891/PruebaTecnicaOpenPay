@@ -33,3 +33,37 @@ Prueba de openpay
 
 ## Resultado de la subida de varias imagenes vista desde el dashboard
 <img src='app/src/main/res/drawable/upoload_dashboard.png' width='1000'>
+
+
+# Documentación
+
+**PruebaTecnicaOpenPay** Es una aplicación hecha totalmente en kotlin usando Jetpack Compose en el que se muestra el uso de de distintas tecnologias, 
+estre la cuales destaca Firebase Storage,Firestore y Hilt entre otras.
+
+
+## Referencias
+
+- <https://developer.android.com/jetpack/compose/documentation?hl=es-419> para Jeppack compose.
+
+- <https://firebase.google.com/?hl=es> para Firebase.
+
+- <https://developer.android.com/training/dependency-injection/hilt-android?hl=es-419> para Hilt.
+
+## Dependencias
+
+Para que el proyecto funcione correctamete es necesario tener instalado el NDk y Cmake para el interprete C++.
+
+![image](https://github.com/master1891/PruebaTecnicaOpenPay/assets/43839109/8499b003-c694-4ecd-8e2a-8a3ff22aa482)
+
+
+## Consideraciones
+
+- Cualquier sugerencias es bienvenida.
+- Sientase libre de hacer un pullrequest para mejoras de código.
+- Para entender el proyecto es necesario tenr conocimientos de JetPack Compose
+- Conocimientos de android.
+- Conocimientos basicos de C++.
+- Instalar Cmake y NDK.
+- Clone este repositiorio y cambiese a la rama `master` y a trabajar :).
+
+
