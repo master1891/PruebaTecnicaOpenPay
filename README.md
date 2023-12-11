@@ -1,7 +1,7 @@
 # PruebaTecnicaOpenPay
 Prueba de openpay
 
-## A contibuación se muestra el flujo de pantallas de la aplicacion
+## A continuación se muestra el flujo de pantallas de la aplicacion
 
 ## Captura del home profile
 
