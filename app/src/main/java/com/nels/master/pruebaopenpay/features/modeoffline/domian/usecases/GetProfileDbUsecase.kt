@@ -5,7 +5,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.storage.entities.Profi
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetProfileDbUsecase constructor(
+class GetProfileDbUsecase @Inject constructor(
     private val profileDbRepository: ProfileDbRepository
 ) {
     suspend operator fun invoke(): Result{

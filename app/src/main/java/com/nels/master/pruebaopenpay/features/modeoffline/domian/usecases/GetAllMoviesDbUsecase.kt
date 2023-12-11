@@ -7,7 +7,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.storage.entities.Movie
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetAllMoviesDbUsecase constructor(
+class GetAllMoviesDbUsecase @Inject constructor(
     private val moviesDbRepository: MoviesDbRepository
 ) {
     suspend operator fun invoke(): Result{

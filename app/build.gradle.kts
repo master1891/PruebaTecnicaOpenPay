@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.nels.master.pruebaopenpay"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -69,7 +69,7 @@ dependencies {
     //referencia a versiones de dependencias
     val retrofit_version = "2.9.0";
     val hilt_version = "2.49"
-    val room_version = "2.6.1"
+    val room_version = "2.5.2"
 
     implementation("com.google.firebase:firebase-firestore:24.10.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
@@ -115,8 +115,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
 
-    implementation ("androidx.room:room-runtime:$room_version")
-    annotationProcessor ("androidx.room:room-compiler:$room_version")
+
+    implementation ("androidx.room:room-runtime:${room_version}")
+    kapt("androidx.room:room-compiler:${room_version}")
 
 
 }

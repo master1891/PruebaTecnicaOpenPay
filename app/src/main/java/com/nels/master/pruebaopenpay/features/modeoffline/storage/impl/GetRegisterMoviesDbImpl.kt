@@ -8,7 +8,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.storage.dao.MovieDao
 import com.nels.master.pruebaopenpay.features.modeoffline.storage.entities.MovieEntity
 import javax.inject.Inject
 
-class GetRegisterMoviesDbImpl  constructor(
+class GetRegisterMoviesDbImpl @Inject constructor(
     private val moviesDao: MovieDao
 ):MoviesDbRegisterRepository {
 

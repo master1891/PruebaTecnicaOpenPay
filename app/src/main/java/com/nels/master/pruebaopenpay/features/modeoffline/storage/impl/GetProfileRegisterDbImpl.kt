@@ -5,7 +5,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.storage.dao.ProfileDao
 import com.nels.master.pruebaopenpay.features.modeoffline.storage.entities.ProfileEntity
 import javax.inject.Inject
 
-class GetProfileRegisterDbImpl  constructor(
+class GetProfileRegisterDbImpl @Inject constructor(
     private val profileDao: ProfileDao
 ):ProfileRegisterDbRepository {
 

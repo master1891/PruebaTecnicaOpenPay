@@ -5,7 +5,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.storage.entities.Movie
 import java.lang.Exception
 import javax.inject.Inject
 
-class GetRegisterMoviesDbUsecase constructor(
+class GetRegisterMoviesDbUsecase @Inject constructor(
     private val moviesDbRegisterRepository: MoviesDbRegisterRepository
 ) {
     suspend operator fun invoke(movies:List<MovieEntity>): Result{

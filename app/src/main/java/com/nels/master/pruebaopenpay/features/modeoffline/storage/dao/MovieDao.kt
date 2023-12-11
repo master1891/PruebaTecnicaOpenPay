@@ -1,5 +1,6 @@
 package com.nels.master.pruebaopenpay.features.modeoffline.storage.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -23,9 +24,10 @@ interface MovieDao {
     fun createMovies(objects: List<MovieEntity>)
 
     @Query("SELECT * from MovieEntity")
-    suspend fun getMovies(): List<MovieEntity>
+    fun getMovies(): List<MovieEntity>
 
     @Query("SELECT * from MovieEntity WHERE typeSource = :typeMovieCategory ")
-    suspend fun getFilterMovies(typeMovieCategory: Int): List<MovieEntity>
+    fun getFilterMovies(typeMovieCategory: Int): List<MovieEntity>
+
 }
 

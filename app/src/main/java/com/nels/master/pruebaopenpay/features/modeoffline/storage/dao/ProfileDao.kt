@@ -13,7 +13,7 @@ interface ProfileDao {
     fun createProfile(profileEntity: ProfileEntity)
 
     @Query("SELECT * from ProfileEntity")
-    suspend fun getProfile(): List<ProfileEntity>
+     fun getProfile(): List<ProfileEntity>
 
 }
 

@@ -57,8 +57,7 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //val moviesDatabase = Room.databaseBuilder(this, MoviesDatabase::class.java,"movie_db").build()
-        //val ele = moviesDatabase.movieDao
+
 
         setContent {
 

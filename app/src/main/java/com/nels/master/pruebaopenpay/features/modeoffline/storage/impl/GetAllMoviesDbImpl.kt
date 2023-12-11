@@ -4,7 +4,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.domian.MoviesDbReposit
 import com.nels.master.pruebaopenpay.features.modeoffline.storage.dao.MovieDao
 import javax.inject.Inject
 
-class GetyAllMoviesDbImpl  constructor(
+class GetAllMoviesDbImpl @Inject  constructor(
     private val moviesDao: MovieDao
 ):MoviesDbRepository {
     override suspend fun getAllMovies(): MoviesDbRepository.ResultMoviesDb {

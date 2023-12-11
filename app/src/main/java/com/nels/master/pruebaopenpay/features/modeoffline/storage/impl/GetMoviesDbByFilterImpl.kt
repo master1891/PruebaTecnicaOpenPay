@@ -6,7 +6,7 @@ import com.nels.master.pruebaopenpay.features.modeoffline.domian.MoviesDbReposit
 import com.nels.master.pruebaopenpay.features.modeoffline.storage.dao.MovieDao
 import javax.inject.Inject
 
-class GetMoviesDbByFilterImpl  constructor(
+class GetMoviesDbByFilterImpl @Inject constructor(
     private val moviesDao: MovieDao
 ):MoviesDbByFilterRepository {
 
