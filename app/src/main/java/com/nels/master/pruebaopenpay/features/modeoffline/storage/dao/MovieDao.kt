@@ -25,4 +25,7 @@ interface MovieDao {
     @Query("SELECT * from MovieEntity")
     suspend fun getMovies(): List<MovieEntity>
 
+    @Query("SELECT * from MovieEntity WHERE typeSource = :typeMovieCategory ")
+    suspend fun getFilterMovies(typeMovieCategory: Int): List<MovieEntity>
 }
+
