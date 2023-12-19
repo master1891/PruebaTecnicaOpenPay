@@ -2,4 +2,14 @@
 <resources>
 
     <style name="Theme.PruebaOpenPay" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.SplashScreenCompose" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/holo_blue_dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.SplashScreenCompose</item>
+    </style>
+
+
 </resources>

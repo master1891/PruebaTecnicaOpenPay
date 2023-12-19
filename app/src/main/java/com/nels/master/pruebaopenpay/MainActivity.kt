@@ -26,15 +26,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
-import androidx.room.Room
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.nels.master.pruebaopenpay.features.homefeature.viewmodels.ProfileViewModel
-import com.nels.master.pruebaopenpay.features.listfeature.network.ApiMovie
+
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
-import com.nels.master.pruebaopenpay.features.modeoffline.storage.MoviesDatabase
 import com.nels.master.pruebaopenpay.features.uploadfeature.viewmodels.UploafFileViewModel
 import com.nels.master.pruebaopenpay.shared.hasLocationPermission
 import com.nels.master.pruebaopenpay.ui.components.BarraInferior
@@ -42,8 +41,8 @@ import com.nels.master.pruebaopenpay.ui.components.BottomNavigationScreens
 import com.nels.master.pruebaopenpay.ui.components.NavigationHost
 import com.nels.master.pruebaopenpay.ui.components.RationaleAlert
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.notify
-import javax.inject.Inject
+
+import com.nels.master.pruebaopenpay.features.splashfeature.SplashViewModel
 
 
 @AndroidEntryPoint
@@ -53,11 +52,13 @@ class MainActivity : ComponentActivity() {
     val mainViewModel by viewModels<MainViewMoldel>()
     val uploadViewModel by viewModels<UploafFileViewModel>()
     val profileViewModel by viewModels<ProfileViewModel>()
+    val splashViewModel by viewModels<SplashViewModel>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initSplash()
 
         setContent {
 
@@ -68,8 +69,19 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private fun initSplash(){
+
+        installSplashScreen().setKeepOnScreenCondition{
+            splashViewModel.loadingSplash
+        }
+
+        splashViewModel.setLoading()
+    }
+
 
 }
+
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalPermissionsApi::class)

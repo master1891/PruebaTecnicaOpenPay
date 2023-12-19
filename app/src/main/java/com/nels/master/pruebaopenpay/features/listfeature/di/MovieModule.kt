@@ -21,6 +21,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.grpc.android.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -55,7 +56,7 @@ class MovieModule {
         val TIMEOUT = 60
         //val builder: OkHttpClient.Builder
         val loggingInterceptor = HttpLoggingInterceptor()
-        //loggingInterceptor.setLevel(if (BuilC.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+        loggingInterceptor.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
         val headerValue = "Bearer ".plus( Cons.getKeyAccessToken())
 
         return OkHttpClient.Builder()
