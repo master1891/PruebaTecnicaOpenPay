@@ -1,5 +1,6 @@
 package com.nels.master.pruebaopenpay.features.listfeature.di
 
+import androidx.navigation.Navigator
 import com.google.gson.GsonBuilder
 import com.nels.master.pruebaopenpay.features.homefeature.domain.FavoriteMoviesUserRepository
 import com.nels.master.pruebaopenpay.features.homefeature.domain.ProfileRepository
@@ -29,18 +30,19 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 import kotlin.io.encoding.Base64
 
 @Module
 @InstallIn(SingletonComponent::class)
 class MovieModule {
+
+
     @Singleton
     @Provides
-    fun getApiMovie(
-        client: OkHttpClient,
-        converterFactory: Converter.Factory
-    ): ApiMovie {
+    @Named("prod")
+    fun getApiMovie( client: OkHttpClient, converterFactory: Converter.Factory): ApiMovie {
         return Retrofit.Builder()
             .baseUrl(Cons.getUrlBase())
             .addConverterFactory(converterFactory)
@@ -51,12 +53,24 @@ class MovieModule {
 
     @Singleton
     @Provides
-    fun getOkHttpClient(): OkHttpClient {
+    @Named("qa")
+    fun getApiMovieQA( client: OkHttpClient, converterFactory: Converter.Factory): ApiMovie {
+        return Retrofit.Builder()
+            .baseUrl(Cons.getUrlBase())
+            .addConverterFactory(converterFactory)
+            .client(client)
+            .build()
+            .create(ApiMovie::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun getOkHttpClient(myClient:String): OkHttpClient {
 
         val TIMEOUT = 60
         //val builder: OkHttpClient.Builder
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+        //val loggingInterceptor = HttpLoggingInterceptor()
+        //loggingInterceptor.setLevel(if (BuildConfig) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
         val headerValue = "Bearer ".plus( Cons.getKeyAccessToken())
 
         return OkHttpClient.Builder()
@@ -64,7 +78,7 @@ class MovieModule {
             .connectTimeout(TIMEOUT.toLong(), TimeUnit.SECONDS)
             .readTimeout(TIMEOUT.toLong(), TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT.toLong(), TimeUnit.SECONDS)
-            .addInterceptor(loggingInterceptor)
+            //.addInterceptor(loggingInterceptor)
             .addInterceptor {
                 val originalRequest = it.request()
                 val builder = originalRequest.newBuilder()
@@ -75,6 +89,7 @@ class MovieModule {
             .build()
 
     }
+
 
     @Singleton
     @Provides
@@ -113,10 +128,13 @@ class MovieModule {
     fun getProfile(impl: GetProfileImpl): ProfileRepository {
         return impl
     }
+
     @Provides
     fun providesFavoriteUser(impl: GetFavoriteMoviesUserImpl): FavoriteMoviesUserRepository {
         return impl
     }
+
+
 
     @Provides
     fun provedeRatedUser(impl: GetRatedMoviesUserImpl): RatedMoviesUserRepository {

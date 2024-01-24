@@ -1,48 +1,38 @@
 package com.nels.master.pruebaopenpay
 
+
 import android.Manifest
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import com.nels.master.pruebaopenpay.ui.theme.PruebaOpenPayTheme
-
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.nels.master.pruebaopenpay.features.homefeature.viewmodels.ProfileViewModel
-
 import com.nels.master.pruebaopenpay.features.listfeature.viewmodels.ListMoviesViewModel
 import com.nels.master.pruebaopenpay.features.locationfeature.viewmodels.MainViewMoldel
+import com.nels.master.pruebaopenpay.features.splashfeature.SplashViewModel
 import com.nels.master.pruebaopenpay.features.uploadfeature.viewmodels.UploafFileViewModel
 import com.nels.master.pruebaopenpay.shared.hasLocationPermission
 import com.nels.master.pruebaopenpay.ui.components.BarraInferior
 import com.nels.master.pruebaopenpay.ui.components.BottomNavigationScreens
 import com.nels.master.pruebaopenpay.ui.components.NavigationHost
 import com.nels.master.pruebaopenpay.ui.components.RationaleAlert
+import com.nels.master.pruebaopenpay.ui.theme.PruebaOpenPayTheme
 import dagger.hilt.android.AndroidEntryPoint
-
-import com.nels.master.pruebaopenpay.features.splashfeature.SplashViewModel
 
 
 @AndroidEntryPoint
@@ -69,8 +59,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
     private fun initSplash(){
 
+        installSplashScreen()
         installSplashScreen().setKeepOnScreenCondition{
             splashViewModel.loadingSplash
         }

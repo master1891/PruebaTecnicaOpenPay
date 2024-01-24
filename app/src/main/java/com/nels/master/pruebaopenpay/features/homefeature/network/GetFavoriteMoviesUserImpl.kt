@@ -9,9 +9,10 @@ import com.nels.master.pruebaopenpay.shared.toDataOrError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Named
 
 class GetFavoriteMoviesUserImpl @Inject constructor(
-    private val apiMovie: ApiMovie
+   @Named("qa") private val apiMovie: ApiMovie
 ):FavoriteMoviesUserRepository {
 
     override suspend fun getFavoriteMoviesUser(profileId: Int): FavoriteMoviesUserRepository.ResultFavorites {
@@ -23,3 +24,4 @@ class GetFavoriteMoviesUserImpl @Inject constructor(
         }
     }
 }
+
